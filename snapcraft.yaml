@@ -31,6 +31,8 @@ parts:
             - build-essential
             - flex
             - gperf
+            - libgd-perl
+            - libxml-libxml-perl
             - libxml2-dev
         stage-packages:
             - libxml2
