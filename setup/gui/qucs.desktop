@@ -1,0 +1,17 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Qucs Spice
+Comment=An Universal Circuit Simulator
+Comment[de]=Ein universeller Schaltkreissimulator
+Comment[es]=Un simulador universal de circuitos
+Comment[fr]=Simulateur universel de circuits
+Comment[it]=Simulatore universale di circuiti
+Comment[pt]=Simulador universal de circuitos
+Comment[ru]=Универсальный симулятор электронных цепей
+Exec=qucs-spice.qucs %U
+Icon=${SNAP}/meta/gui/icon.svg
+Terminal=false
+
+Type=Application
+Categories=Education;Electronics
+StartupNotify=false

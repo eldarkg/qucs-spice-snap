@@ -1,0 +1,47 @@
+name: qucs-spice
+version: "dev-snap1"
+summary: Quite Universal Circuit Simulator
+description: |
+  Qucs is an integrated circuit simulator which means you are able to setup
+  a circuit with a graphical user interface (GUI) and simulate the large-signal,
+  small-signal and noise behaviour of the circuit. After that simulation has
+  finished you can view the simulation results on a presentation page or window.
+  Supports spice simulators.
+confinement: strict
+
+apps:
+    qucs:
+        command: wrapper $SNAP/usr/bin/qucs
+        plugs: [home, unity7]
+
+parts:
+    wrapper:
+        source: .
+        plugin: dump
+        organize:
+            wrapper: bin/wrapper
+
+    qucs:
+        source: https://github.com/ra3xdh/qucs
+        source-branch: qucs-s-standalone
+        source-type: git
+        plugin: cmake
+        configflags: [-DCMAKE_BUILD_TYPE=Release,
+                      -DCMAKE_INSTALL_PREFIX=/usr]
+        build-packages:
+            - bison
+            - build-essential
+            - flex
+            - gperf
+            - libqt4-dev
+            - libqt4-qt3support
+        stage-packages:
+            - ngspice
+        after: [desktop/qt4]
+
+    ngspice-fix:
+        source: .
+        plugin: dump
+        organize:
+            fixes/ngspice/spinit: usr/share/ngspice/scripts/spinit
+        after: [qucs]
