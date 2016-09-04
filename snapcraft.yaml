@@ -22,7 +22,7 @@ parts:
             wrapper: bin/wrapper
 
     qucs:
-        source: https://github.com/ra3xdh/qucs
+        source: https://github.com/ra3xdh/qucs.git
         source-branch: qucs-s-standalone
         source-type: git
         plugin: cmake
@@ -37,6 +37,8 @@ parts:
             - libqt4-qt3support
         stage-packages:
             - ngspice
+        stage:
+            - -usr/share/ngspice/scripts/spinit
         after: [desktop/qt4]
 
     ngspice-fix:
