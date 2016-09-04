@@ -21,6 +21,20 @@ parts:
         organize:
             wrapper: bin/wrapper
 
+    adms:
+        source: https://github.com/Qucs/ADMS.git
+        source-type: git
+        plugin: autotools
+        configflags: [-prefix=/usr]
+        build-packages:
+            - bison
+            - build-essential
+            - flex
+            - gperf
+            - libxml2-dev
+        stage-packages:
+            - libxml2
+
     qucs:
         source: https://github.com/ra3xdh/qucs.git
         source-branch: qucs-s-standalone
@@ -39,7 +53,7 @@ parts:
             - ngspice
         stage:
             - -usr/share/ngspice/scripts/spinit
-        after: [desktop/qt4]
+        after: [desktop/qt4, adms]
 
     ngspice-fix:
         source: .
