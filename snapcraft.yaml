@@ -1,5 +1,5 @@
 name: qucs-spice
-version: "dev-snap1"
+version: "0.0.19S-RC7-snap2"
 summary: Quite Universal Circuit Simulator
 description: |
   Qucs is an integrated circuit simulator which means you are able to setup
@@ -38,9 +38,7 @@ parts:
             - libxml2
 
     qucs:
-        source: https://github.com/ra3xdh/qucs.git
-        source-branch: qucs-s-standalone
-        source-type: git
+        source: https://github.com/ra3xdh/qucs/archive/0.0.19S-rc7.tar.gz
         plugin: cmake
         configflags: [-DCMAKE_BUILD_TYPE=Release,
                       -DCMAKE_INSTALL_PREFIX=/usr]
