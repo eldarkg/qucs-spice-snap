@@ -260,6 +260,8 @@ if [ $needs_update = true ]; then
   if [ ! -d ~/.qucs/user_lib ]; then
     mkdir -p ~/.qucs/user_lib
   fi
+  # Add link to content
+  ln -sf $SNAP/usr/share/qucs ~/content
 fi
 
 # Set ngspice library directory
