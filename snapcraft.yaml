@@ -1,5 +1,6 @@
 name: qucs-spice
-version: "0.0.19S-RC7-snap2"
+version: "0.0.19S-RC8-snap1"
+grade: stable
 summary: Quite Universal Circuit Simulator
 description: |
   Qucs is an integrated circuit simulator which means you are able to setup
@@ -12,7 +13,7 @@ confinement: strict
 apps:
     qucs:
         command: wrapper $SNAP/usr/bin/qucs
-        plugs: [home, unity7]
+        plugs: [cups-control, home, locale-control, unity7]
 
 parts:
     wrapper:
@@ -38,7 +39,7 @@ parts:
             - libxml2
 
     qucs:
-        source: https://github.com/ra3xdh/qucs/archive/0.0.19S-rc7.tar.gz
+        source: https://github.com/ra3xdh/qucs/archive/0.0.19S-rc8.tar.gz
         plugin: cmake
         configflags: [-DCMAKE_BUILD_TYPE=Release,
                       -DCMAKE_INSTALL_PREFIX=/usr]
@@ -48,12 +49,13 @@ parts:
             - flex
             - gperf
             - libqt4-dev
-            - libqt4-qt3support
         stage-packages:
+            - libqt4-qt3support
+            - libqt4-svg
             - ngspice
         stage:
             - -usr/share/ngspice/scripts/spinit
-        after: [desktop/qt4, adms]
+        after: [desktop-qt4, adms]
 
     ngspice-fix:
         source: .
